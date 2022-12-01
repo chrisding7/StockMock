@@ -83,3 +83,96 @@ input {
 .submit-button-content {
   color: black;
 }
+
+.error-message {
+  color: #ff0000;
+}
+
+.portfolio-container {
+  display: inline-flex;
+}
+
+.portfolio-value-container {
+  border: solid var(--main-dark-grey);
+}
+
+.portfolio-stocks-container {
+  border: solid var(--main-dark-grey);
+}
+
+.stocks-header {
+  text-align: left;
+  margin-left: 5%;
+}
+
+.stock-ul{
+ padding: 0;
+}
+
+.stock-list-tile {
+  width: 95%;
+  border: solid var(--main-dark-grey);
+  display: flex;
+  margin: 2%;
+}
+
+.stock-list-tile-left-half {
+  width: 30%;
+}
+
+.stock-list-tile-right-half {
+  width: 70%;
+}
+
+.ticker-text {
+  margin-bottom: 0px;
+}
+
+.shares-text {
+  margin-top: 0px;
+}
+
+.stock-price-text {
+  margin-bottom: 0px;
+}
+
+.stock-bought-price-text {
+  margin-top: 0px;
+}
+
+.sell-quantity-input {
+  width: 20%;
+  text-align: center;
+}
+
+.users-list-body-container {
+  display: inline-flex;
+}
+
+.all-users-list {
+  border: solid var(--main-dark-grey);
+}
+
+.users-following-list {
+  border: solid var(--main-dark-grey);
+}
+
+.profile-container {
+  display: inline-flex;
+}
+
+.purchase-history-container {
+  border: solid var(--main-dark-grey);
+}
+
+.purchase-history-header {
+  margin-bottom: 0px;
+}
+
+.follows-box {
+  border: solid var(--main-dark-grey);
+}
+
+.profile-info-container {
+  border: solid var(--main-dark-grey);
+}

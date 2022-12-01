@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
-function Navbar({ user, setUser }) {
+function Navbar({user, setUser}) {
     // function handleLogout() {
     //     useNavigate("/login");
     //     console.log('after redirect');
@@ -10,17 +10,30 @@ function Navbar({ user, setUser }) {
 
     // }
 
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
+
     function handleLogout() {
-        setUser(null);
-        let path = `/login`; 
-        navigate(path);
+        let path = `/login`;
+
+        fetch("/logout", {method: "DELETE"}).then((r) => {
+            if (r.ok) {
+                setUser(null)
+            }
+        }).then(navigate(path));
     }
 
-    return(
+    return (
         <div className="nav-container">
             <NavLink to='/'>Home</NavLink>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            <NavLink to='/market'>Market</NavLink>
+            <NavLink to='/users'>Users</NavLink>
+            <NavLink to='/profile'>Profile</NavLink>
+
+            <span>Welcome, {
+                user.first_name
+            }!</span>
+            <button className="logout-btn"
+                onClick={handleLogout}>Logout</button>
         </div>
     )
 }
