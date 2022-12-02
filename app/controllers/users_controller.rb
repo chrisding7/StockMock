@@ -10,8 +10,12 @@ class UsersController < ApplicationController
     #sign-up
     def create
         user = User.create!(user_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
+        if user.valid?
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     #stay signed in
@@ -26,9 +30,16 @@ class UsersController < ApplicationController
         render json: user, status: :accepted
     end
 
+    # DELETE :destroy /users/:id
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
     private
 
     def user_params
-        params.permit(:first_name, :last_name, :email, :password_digest, :buying_power)
+        params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :buying_power)
     end
 end

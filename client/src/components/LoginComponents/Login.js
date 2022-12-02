@@ -56,7 +56,7 @@ function Login({setUser}) {
                 <div className="input-container">
                     <div className="username-login">
                         <label className="label" htmlFor="email">Email</label>
-                        <input type="text" id="username"
+                        <input type="text" id="email"
                             value={email}
                             onChange={
                                 (e) => setEmail(e.target.value)

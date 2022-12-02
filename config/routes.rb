@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :follows
   resources :transactions, only: [:show, :index, :create, :destroy]
   resources :stocks, only: [:show, :index, :create, :update, :destroy]
-  resources :users, only: [:show, :index, :create, :update]
+  resources :users, only: [:show, :index, :create, :update, :destroy]
 
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
