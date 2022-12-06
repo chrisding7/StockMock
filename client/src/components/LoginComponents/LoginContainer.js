@@ -14,8 +14,6 @@ function LoginContainer({
 }) {
     const [showLogin, setShowLogin] = useState(true);
 
-    console.log(showLogin)
-
     return (<div className="App">
         <img src={logo}
             className="Stock-Mock-logo"

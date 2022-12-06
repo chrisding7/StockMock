@@ -43,7 +43,7 @@ function App() {
                 <Route exact path='/users'
                     element={<UsersContainer user={user}/>}/>
                 <Route exact path='/profile'
-                    element={<Profile/>}/>
+                    element={<Profile user={user}/>}/>
             </Routes>
         </div>
     );

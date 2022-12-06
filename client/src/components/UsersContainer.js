@@ -4,6 +4,15 @@ import User from "./User";
 function UsersContainer({user}) {
     const [users, setUsers] = useState([]);
     const [followings, setFollowings] = useState([]);
+    const [follows, setFollows] = useState([]);
+
+    useEffect(() => {
+        fetch(`/follows`)
+        .then((res) => res.json())
+        .then((followsData) => {
+            setFollows(followsData)
+        })
+    }, []);
 
     useEffect(() => {
         fetch(`/users`)
@@ -21,34 +30,54 @@ function UsersContainer({user}) {
         })
     }, []);
 
-    console.log(followings);
-
-    const renderUsers = users.map((user) => {
+    const renderUsers = users.map((thisUser) => {
         return (
             <User key={
-                    user.id
+                    thisUser.id
                 }
-                user={user}
+                user={
+                    user
+                }
+                thisUser={
+                    thisUser
+                }
                 firstName={
-                    user.first_name
+                    thisUser.first_name
                 }
                 lastName={
-                    user.last_name
+                    thisUser.last_name
+                }
+                followings={
+                    followings
+                }
+                follows={
+                    follows
                 }/>
         )
     });
 
-    const renderFollowings = followings.map((user) => {
+    const renderFollowings = followings.map((thisUser) => {
         return (
             <User key={
-                    user.id
+                    thisUser.id
                 }
-                user={user}
+                user={
+                    user
+                }
+                thisUser={
+                    thisUser
+                }
                 firstName={
-                    user.first_name
+                    thisUser.first_name
                 }
                 lastName={
-                    user.last_name
+                    thisUser.last_name
+                }
+                followings={
+                    followings
+                }
+                follows={
+                    follows
                 }/>
         )
     });

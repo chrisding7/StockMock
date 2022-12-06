@@ -2,13 +2,6 @@ import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 
 function Navbar({user, setUser}) {
-    // function handleLogout() {
-    //     useNavigate("/login");
-    //     console.log('after redirect');
-    //     setUser(null);
-    //     console.log('after setUser');
-
-    // }
 
     let navigate = useNavigate();
 

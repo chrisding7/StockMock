@@ -1,6 +1,7 @@
 import React from "react";
 
-function Profile() {
+function Profile({user}) {
+    console.log(user)
     return (
         <div>
             <h1>My Profile</h1>
@@ -14,9 +15,8 @@ function Profile() {
                 </div>
                 <div className="profile-right-half">
                     <div className="profile-info-container">
-                        <h4>Username</h4>
-                        <p>First Name</p>
-                        <p>Last Name</p>
+                        <h4>{user.email}</h4>
+                        <p>{user.first_name} {user.last_name}</p>
                     </div>
                     <div className="follows-box">
                         <h4>Followers:
