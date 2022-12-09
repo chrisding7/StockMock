@@ -377,12 +377,11 @@ input {
 
 .user-link {
   text-decoration: none;
-  font-size: xx-large;
+  font-size: 20px;
   color: white;
   margin-right: 20px;
 }
 .user-link:hover {
-  font-weight: bold;
   color: var(--main-green);
 }
 
@@ -391,22 +390,26 @@ input {
 }
 
 .follow-button {
+  margin: auto;
+  text-align: center;
   color: white;
   background-color: var(--main-light-green);
   cursor: pointer;
   border-radius: 12px;
   border: var(--main-light-green) solid 1px;
-  height: 30px;
+  height: 25px;
   width: 70px;
 }
 
 .unfollow-button {
+  margin: auto;
+  text-align: center;
   color: white;
   background-color: gray;
   cursor: pointer;
   border-radius: 12px;
   border: gray solid 1px;
-  height: 30px;
+  height: 25px;
   width: 70px;
 }
 

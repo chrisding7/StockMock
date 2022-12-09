@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-function MarketStock({user, stocks, ticker, company}) {
+function MarketStock({user, ticker, company}) {
     const [showDetails, setShowDetails] = useState(false);
     const [buyQuantity, setBuyQuantity] = useState(1);
     const [stockPrice, setStockPrice] = useState(0);
@@ -38,7 +38,7 @@ function MarketStock({user, stocks, ticker, company}) {
                         company: company,
                         ticker: ticker,
                         price: stockPrice,
-                        quantity: (thisStock.quantity + buyQuantity),
+                        quantity: (thisStock.quantity + parseInt(buyQuantity)),
                         user_id: user.id
                     }
                 )
@@ -54,7 +54,7 @@ function MarketStock({user, stocks, ticker, company}) {
                         user_id: user.id,
                         stock_id: thisStock.id,
                         transaction_type: "buy",
-                        transaction_price: (stockPrice * buyQuantity)
+                        transaction_price: (stockPrice * parseInt(buyQuantity))
                     }
                 )
             }).then(res => res.json());
@@ -71,7 +71,7 @@ function MarketStock({user, stocks, ticker, company}) {
                         email: user.email,
                         password: user.password_digest,
                         password_confirmation: user.password_digest,
-                        buying_power: (user.buying_power - (stockPrice * buyQuantity))
+                        buying_power: (user.buying_power - (stockPrice * parseInt(buyQuantity)))
                     }
                 )
             }).then(res => res.json());
@@ -87,7 +87,7 @@ function MarketStock({user, stocks, ticker, company}) {
                         company: company,
                         ticker: ticker,
                         price: stockPrice,
-                        quantity: buyQuantity,
+                        quantity: parseInt(buyQuantity),
                         user_id: user.id
                     }
                 )
@@ -104,7 +104,7 @@ function MarketStock({user, stocks, ticker, company}) {
                             user_id: user.id,
                             stock_id: stockId,
                             transaction_type: "buy",
-                            transaction_price: (stockPrice * buyQuantity)
+                            transaction_price: (stockPrice * parseInt(buyQuantity))
                         }
                     )
                 })
@@ -124,7 +124,7 @@ function MarketStock({user, stocks, ticker, company}) {
                         email: user.email,
                         password: user.password_digest,
                         password_confirmation: user.password_digest,
-                        buying_power: (user.buying_power - (stockPrice * buyQuantity))
+                        buying_power: (user.buying_power - (stockPrice * parseInt(buyQuantity)))
                     }
                 )
             }).then(res => res.json());
