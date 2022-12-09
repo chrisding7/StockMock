@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import User from "./User";
 
-function UsersContainer({user}) {
+function UsersContainer({user, profileUser, setProfileUser}) {
     const [users, setUsers] = useState([]);
     const [followings, setFollowings] = useState([]);
+    const [followers, setFollowers] = useState([]);
     const [follows, setFollows] = useState([]);
 
     useEffect(() => {
@@ -27,9 +28,14 @@ function UsersContainer({user}) {
         .then((res) => res.json())
         .then((userData) => {
             setFollowings(userData.followings)
+            setFollowers(userData.followings)
         })
     }, []);
+    
+    const followings_filter = followings.map(following => following.id)
 
+    const followingArray = users.filter(user => followings_filter.includes(user.id))
+    
     const renderUsers = users.map((thisUser) => {
         return (
             <User key={
@@ -50,13 +56,22 @@ function UsersContainer({user}) {
                 followings={
                     followings
                 }
+                followers={
+                    followers
+                }
                 follows={
                     follows
+                }
+                profileUser={
+                    profileUser
+                }
+                setProfileUser={
+                    setProfileUser
                 }/>
         )
     });
 
-    const renderFollowings = followings.map((thisUser) => {
+    const renderFollowings = followingArray.map((thisUser) => { 
         return (
             <User key={
                     thisUser.id
@@ -76,26 +91,33 @@ function UsersContainer({user}) {
                 followings={
                     followings
                 }
+                followers={
+                    followers
+                }
                 follows={
                     follows
+                }
+                profileUser={
+                    profileUser
+                }
+                setProfileUser={
+                    setProfileUser
                 }/>
         )
     });
-    
+
+
     return (
         <div>
-            <h1>Users</h1>
             <div className="users-list-body-container">
-                <div className="all-users-list">
+                <div className="user-float-child">
                     <h2 className="users-list-header">All Users</h2>
-                    <input className="users-search-bar" type="search" placeholder="Search Users"></input>
                     <ul className="users-list">
                         {renderUsers} </ul>
                 </div>
-                <div className="users-following-list">
+                <div className="user-float-child">
                     <h2 className="following-list-header">Following</h2>
-                    <input className="following-search-bar" type="search" placeholder="Search Following"></input>
-                    <ul className="following-list">
+                    <ul className="users-list">
                         {renderFollowings} </ul>
                 </div>
             </div>

@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from "react";
-import PortfolioValue from "./PortfolioValue";
+import React, {useState, useEffect} from "react";
 import StockList from "./StockList";
 
 function Home({user}) {
     const [stocks, setStocks] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(()=> {
-        fetch(`/users/${user.id}`)
-        .then((res) => res.json())
-        .then(userData => {
-            setStocks(userData.stocks)
-        })
-      }, []);
+    useEffect(() => {
+        fetch(`/users/${
+            user.id
+        }`).then((res) => res.json()).then(userData => {
+            setStocks(userData.stocks)}).then(setIsLoading(false))
+    }, []);
 
     return (
-        <div>
-            <h1>Home</h1>
-            <div className="homepage-buying-power">
-                <h3>Buying power: {user.buying_power} </h3>
-            </div>
             <div className="portfolio-container">
-                <PortfolioValue user={user}  stocks={stocks}/>
-                <StockList user={user} stocks={stocks}/>
-            </div>
-        </div>
-
+                {
+                isLoading ? (
+                    <p>Loading Portfolio...</p>
+                ) : (
+                    <div className="stocks-container">
+                        <div className="stocks-header">
+                            <h1 className="stocks-header-h1">Stocks</h1>
+                            <h4 className="header-buying-power-h4">Buying power: ${+(user.buying_power).toFixed(2)}</h4>
+                        </div>
+                            
+                        <div>
+                            <StockList user={user}
+                                stocks={stocks}/>
+                        </div>
+                    </div>
+                )
+            } </div>
     )
 }
 

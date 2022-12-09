@@ -1,20 +1,22 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
-function User({user, thisUser, firstName, lastName, followings, follows}) {
-
+function User({
+    user,
+    thisUser,
+    firstName,
+    lastName,
+    followings,
+    follows,
+    setProfileUser
+}) {
     const userId = thisUser.id
     let followingsIds = followings.map((oneUser) => oneUser.id)
-    const [showFollow, setShowFollow] = useState(!followingsIds.includes(userId));
+    const [showFollow, setShowFollow] = useState(! followingsIds.includes(userId));
     const isMe = user.id === thisUser.id
-    
-    // console.log(followings.map((oneUser) => oneUser.id))
-    // console.log(follows)
-    // console.log(follows.find(({follower_id, followed_user_id}) => follower_id === user.id && followed_user_id === userId))
 
-    function handleFollow() {
-        // if showFollow true, post create follow, if showFollow false, delete follow
+    function handleFollow() { 
         if (showFollow) {
-            console.log("added follow")
             fetch("/follows", {
                 method: "POST",
                 headers: {
@@ -26,11 +28,8 @@ function User({user, thisUser, firstName, lastName, followings, follows}) {
             }).then((res) => res.json())
             setShowFollow(() => !showFollow)
         } else {
-            console.log("unfollowed")
             const unfollowId = follows.find(({follower_id, followed_user_id}) => follower_id === user.id && followed_user_id === userId).id
-            fetch(`/follows/${unfollowId}`, {
-                method: "DELETE"
-            })
+            fetch(`/follows/${unfollowId}`, {method: "DELETE"})
             setShowFollow(() => !showFollow)
         }
         window.location.reload()
@@ -38,11 +37,21 @@ function User({user, thisUser, firstName, lastName, followings, follows}) {
 
     return (
         <div className="user-list-tile">
-            <h4>{firstName} {lastName}</h4>
-            <button>View Profile</button>
-            {isMe? (null):(<button onClick={handleFollow}>{showFollow? "Follow" : "Unfollow"}</button>)}
+            <Link to="/userprofile" className="user-link"
+                onClick={
+                    () => setProfileUser(thisUser)
+            }>
+                {firstName} {lastName}</Link>
+            {
+            isMe ? (null) : (showFollow ? (
+                <button className="follow-button"
+                    onClick={handleFollow}>Follow</button>
+            ) : (
+                <button className="unfollow-button"
+                    onClick={handleFollow}>Unfollow</button>
+            ))} 
         </div>
     );
 }
-
-export default User;
+    
+    export default User;

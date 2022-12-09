@@ -6,46 +6,44 @@ import logo from '/Users/cding/Development/code/phase-5/StockMock/client/src/log
 import {Link} from "react-router-dom";
 
 function LoginContainer({
-    setUser,
-    firstName,
-    lastName,
-    setFirstName,
-    setLastName
+    setUser
 }) {
     const [showLogin, setShowLogin] = useState(true);
 
-    return (<div className="App">
-        <img src={logo}
-            className="Stock-Mock-logo"
-            alt="StockMock"/>
-        <img src={cashLogo}
-            className="App-logo"
-            alt="Logo"/> {showLogin? (
-                                <div>
-                                    <Login setUser={setUser}/>
-                                    <div id="to-signup-tag">
-                                        <span>Don't have an account?</span>
-                                        <div onClick={() => setShowLogin(false)}>
-                                            Sign Up
-                                        </div>
-                                        <Link to='/signup' onClick={() => setShowLogin(false)}>
-                                            Sign Up
-                                        </Link>
-                                    </div>      
-                                </div>   
-                            ):(
-                                <div>
-                                    <Signup setUser={setUser}/>
-                                    <div id="to-login-tag">
-                                        <span>Already have an account?</span>
-                                        <Link to='/login' onClick={() => setShowLogin(true)}>
-                                            Log In
-                                        </Link>
-                                    </div>      
-                                </div> 
-                            )}
-                        </div>
-            )
-        }
+    return (<div className="login-container">
+        <div className="blur">
+        <div className="login-window">
+            <img src={logo}
+                className="Stock-Mock-logo"
+                alt="StockMock"/>
+            <img src={cashLogo}
+                className="App-logo"
+                alt="Logo"/> {showLogin? (
+                            <div>
+                                <Login setUser={setUser}/>
+                                <div className="to-signup-tag">
+                                    <span className="tag-text">Don't have an account? </span>
+                                    <Link to='/signup' className="signup-link" onClick={() => setShowLogin(false)}>
+                                        Sign Up
+                                    </Link>
+                                </div>      
+                            </div>   
+                        ):(
+                            <div>
+                                <Signup setUser={setUser}/>
+                                <div className="to-signup-tag">
+                                    <span className="tag-text">Already have an account?</span>
+                                    <Link to='/login' className="signup-link" onClick={() => setShowLogin(true)}>
+                                        Log In
+                                    </Link>
+                                </div>      
+                            </div> 
+                        )}
+                    </div>
+                </div>
+        
+            </div>
+        )
+    }
 
 export default LoginContainer;

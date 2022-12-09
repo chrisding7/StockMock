@@ -2,8 +2,9 @@ import React from "react";
 import Stock from "./Stock";
 
 function StockList({user, stocks}) {
-
+    
     const renderStocks = stocks.map((oneStock) => {
+
         return (
             <Stock key={
                     oneStock.id
@@ -26,13 +27,15 @@ function StockList({user, stocks}) {
                 user={
                     user
                 }
+                stocks={
+                    stocks
+                }
                 />
         )
     })
 
     return (
         <div className="portfolio-stocks-container">
-            <h1 className="stocks-header">Stocks</h1>
             <ul className="stock-ul">
                 {renderStocks}
             </ul>

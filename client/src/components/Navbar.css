@@ -1,0 +1,68 @@
+:root{
+    --main-grey: #282c34;
+    --main-dark-grey: #1c1e21;
+    --main-white: #ffffff;
+    --main-green: #729c62;
+    --main-light-green: #29e020;
+    --main-red: #ff0000;
+}
+  
+.nav-container {
+    position: fixed;
+    width: 100vw;
+    height: 8vh;
+    top: 0;
+}
+
+.nav-Stock-Mock-logo {
+    width: 250px;
+    margin-right: 10px;
+}
+
+.nav-list {
+    height: 8vh;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--main-dark-grey);
+}
+
+li {
+    height: 100%;
+    float: left;
+    border-radius: 4px;
+}
+li a {
+    height: 100%;
+    display: block;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    margin: auto;
+}
+
+.nav-user-list {
+    height: 50%;
+    margin-top: 10px;
+    float: right;
+}
+
+.logout-btn {
+    padding: 0px;
+    margin: 10px;
+    height: 20px;
+    width: 70px;
+    color: white;
+    background-color: var(--main-green);
+    border: #729c62 solid 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: width 1s, height 1s;
+}
+.logout-btn:hover {
+    width: 75px;
+    height: 25px;
+}

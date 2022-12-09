@@ -43,7 +43,7 @@ function Signup({setUser}) {
 
     const errorMessage = errors.map((err) => {
         return (
-            <p key={err}>
+            <p className="error-msg-p" key={err}>
                 {err}
             </p>
         )
@@ -54,28 +54,30 @@ function Signup({setUser}) {
             <form className="signup-form"
                 onSubmit={handleSubmit}>
                 <header className="form-header">
-                    <span className="header-text">Sign Up for StockMock</span>
+                    <h3 className="header-text">Start Investing Now!</h3>
                 </header>
                 <div className="input-container">
-                    <div className="first-name">
-                        <label className="label" htmlFor="firstName">First Name</label>
-                        <input type="text" id="first-name-input"
-                            value={firstName}
-                            onChange={
-                                (e) => setFirstName(e.target.value)
-                            }/>
-                    </div>
-                    <div className="last-name">
-                        <label className="label" htmlFor="lastName">Last Name</label>
-                        <input type="text" id="last-name-input"
-                            value={lastName}
-                            onChange={
-                                (e) => setLastName(e.target.value)
-                            }/>
+                    <div className="name-input-container">
+                        <div className="first-name">
+                            <label className="label" htmlFor="firstName">First Name</label>
+                            <input type="text" className="first-name-input"
+                                value={firstName}
+                                onChange={
+                                    (e) => setFirstName(e.target.value)
+                                }/>
+                        </div>
+                        <div className="last-name">
+                            <label className="label" htmlFor="lastName">Last Name</label>
+                            <input type="text" className="last-name-input"
+                                value={lastName}
+                                onChange={
+                                    (e) => setLastName(e.target.value)
+                                }/>
+                        </div>
                     </div>
                     <div className="username-login">
                         <label className="label" htmlFor="email">Email</label>
-                        <input type="text" id="email-signup"
+                        <input type="text" className="email-input"
                             value={email}
                             onChange={
                                 (e) => setEmail(e.target.value)
@@ -83,7 +85,7 @@ function Signup({setUser}) {
                     </div>
                     <div className="password-login">
                         <label className="label" htmlFor="password">Password</label>
-                        <input type="password"
+                        <input type="password" className="password-input"
                             value={password}
                             onChange={
                                 (e) => setPassword(e.target.value)
@@ -91,7 +93,7 @@ function Signup({setUser}) {
                     </div>
                     <div className="password-confirmation">
                         <label className="label" htmlFor="password">Confirm Password</label>
-                        <input type="password"
+                        <input type="password" className="password-input"
                             value={passwordConfirmation}
                             onChange={
                                 (e) => setPasswordConfirmation(e.target.value)
@@ -99,6 +101,8 @@ function Signup({setUser}) {
                     </div>
                 </div>
                 <footer className="form-footer">
+                <ul className="error-message">
+                {errorMessage}</ul>
                     <div id="submitbutton">
                         <button type="submit" className="submit-button">
                             <span className="submit-button-content">Sign Up</span>
@@ -106,8 +110,7 @@ function Signup({setUser}) {
                     </div>
                 </footer>
             </form>
-            <ul className="error-message">
-                {errorMessage}</ul>
+            
         </div>
     )
 }

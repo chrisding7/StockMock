@@ -9,7 +9,7 @@
 
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: var(--main-dark-grey);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,19 +17,54 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: var(--main-white);
+  background: rgba(255, 255, 255, 0.05);
+  height: 100vh;
+  width: 100vw;
+  background-image: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8&w=1000&q=80");
 }
 
 
+.login-container {
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8&w=1000&q=80");
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--main-white);
+  margin: auto;
+}
+
+.blur {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.05);
+  height: 100vh;
+  width: 100vw;;
+  padding-top: 45px;
+}
+
+.login-window {
+  display: block;
+  background-color: var(--main-dark-grey);
+  border: solid black 1px;
+  border-radius: 10%;
+  height: 90vh;
+  width: 40vw;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+}
 
 .App-logo {
-  height: 20vmin;
+  height: 10vmin;
   pointer-events: none;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 
 .Stock-Mock-logo {
   display: block;
-  height: 20vmin;
+  height: 20vh;
+  padding: 0px;
+  margin: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,9 +73,57 @@
   }
 }
 
+.header-text {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.header-p {
+  margin-top: 0px;
+  font-weight: lighter;
+}
+
 .form-header {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-weight:500;
+}
+
+.input-container {
+  width: 60%;
+  margin: auto;
+}
+
+.username-login {
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.email-input {
+  padding: 8px;
+  border: 2px solid var(--main-grey);
+  border-radius: 8px;
+  outline: none;
+}
+.email-input:focus {
+  border: 2px solid var(--main-light-green);
+}
+
+.password-login {
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.password-input {
+  padding: 8px;
+  border: 2px solid var(--main-grey);
+  border-radius: 8px;
+  outline: none;
+}
+.password-input:focus {
+  border: 2px solid var(--main-light-green);
 }
 
 .form-footer {
@@ -53,126 +136,443 @@
   font-weight: bolder;
 }
 
+label {
+  font-size: small;
+}
+
 input {
   width: 100%;
   margin-bottom: 15px;
 }
 
 .submit-button {
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  background: none currentcolor;
-  border: 0px;
+  margin: auto;
+  background-color: grey;
+  border: solid 2px grey;
   font: inherit;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: unset;
   -webkit-box-align: center;
   align-items: center;
   box-sizing: border-box;
-  display: inline-flex;
   -webkit-box-pack: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 44px;
+  border-radius: 12px;
   color: var(--main-white);
   max-width: 420px;
   min-width: 120px;
+  width: 50%;
+  transition: width 1s;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.submit-button:hover {
+  width: 55%;
+  background-color: var(--main-green);
+  border: solid 2px var(--main-green);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.4), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .submit-button-content {
-  color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.signup-link {
+  color: var(--main-light-green);
+  text-decoration: none;
 }
 
 .error-message {
+  margin: 0px;
+  padding: 0px;
   color: #ff0000;
 }
 
-.portfolio-container {
-  display: inline-flex;
+.error-msg-p {
+  font-size: medium;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
-.portfolio-value-container {
-  border: solid var(--main-dark-grey);
+.to-signup-tag {
+  margin-top: 20px;
+}
+
+.name-input-container {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.first-name-input {
+  text-align: center;
+  flex: 1;
+  width: 80%;
+  padding: 8px;
+  border: 2px solid var(--main-grey);
+  border-radius: 8px;
+  outline: none;
+}
+.first-name-input:focus {
+  border: 2px solid var(--main-light-green);
+}
+.last-name-input {
+  text-align: center;
+  flex: 1;
+  width:80%;
+  padding: 8px;
+  border: 2px solid var(--main-grey);
+  border-radius: 8px;
+  outline: none;
+}
+.last-name-input:focus {
+  border: 2px solid var(--main-light-green);
+}
+
+.portfolio-container {
+  width: 80vw;
+  border-radius: 4px;
 }
 
 .portfolio-stocks-container {
-  border: solid var(--main-dark-grey);
+  height: 400px;
+  overflow-y: scroll;
+  border-top: solid 1px gray;
 }
 
-.stocks-header {
-  text-align: left;
-  margin-left: 5%;
+.stocks-container {
+  margin-top: 70px;
+  border: 1px solid gray;
+  background-color: var(--main-dark-grey);
+  border-radius: 4px;
+}
+
+.stocks-header-h1 {
+  margin-top: 20px;
+  padding: 0;
 }
 
 .stock-ul{
- padding: 0;
+  padding: 0;
 }
 
 .stock-list-tile {
   width: 95%;
-  border: solid var(--main-dark-grey);
   display: flex;
-  margin: 2%;
-}
-
-.stock-list-tile-left-half {
-  width: 30%;
-}
-
-.stock-list-tile-right-half {
-  width: 70%;
+  margin: 50px;
 }
 
 .ticker-text {
-  margin-bottom: 0px;
+  flex: 1;
+  margin: auto;
+
+}
+
+.company-text {
+  flex: 1;
+  margin: auto;
 }
 
 .shares-text {
-  margin-top: 0px;
+  flex: 1;
+  margin: auto;
 }
 
 .stock-price-text {
-  margin-bottom: 0px;
+  flex: 1;
+  margin: auto;
+
+}
+
+.stock-return-ratio-green {
+  flex: 1;
+  color: var(--main-light-green);
+  margin: auto;
+
+}
+
+.stock-return-ratio-red {
+  flex: 1;
+  color: var(--main-red);
+  margin: auto;
+
+}
+
+.sell-button {
+  flex: 1;
+  margin: auto;
+  border: solid 2px var(--main-green) ;
+  border-radius: 12px;
+  color: white;
+  background-color: var(--main-green);
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  transition: width 1s, height 1s;
+  cursor: pointer;
+}
+.sell-button:hover {
+  width: 50px;
+  height: 50px;
+  background-color: var(--main-light-green);
+  border: solid 2px var(--main-light-green);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.4), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.market-stock-view-button {
+  flex: 1;
+  margin: auto;
+}
+
+.buy-quantity-form {
+  flex: 1;
+  margin: 0px;
+}
+
+.sell-quantity-form {
+  flex: 1;
+  margin: 0px;
+}
+
+.sell-quantity-input {
+  flex: 1;
+  width: 20%;
+  text-align: center;
 }
 
 .stock-bought-price-text {
   margin-top: 0px;
 }
 
-.sell-quantity-input {
-  width: 20%;
-  text-align: center;
-}
-
 .users-list-body-container {
-  display: inline-flex;
+  margin-top: 40px;
+  display: flex;
 }
 
-.all-users-list {
-  border: solid var(--main-dark-grey);
+.user-float-child {
+  width: 300px;
+  height: 600px;
+  overflow-y: scroll;
+  flex: 1;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  background-color: var(--main-dark-grey);
 }
 
-.users-following-list {
-  border: solid var(--main-dark-grey);
+.user-float-child:first-child {
+  margin-right: 20px;
+}
+
+.users-list {
+  padding: 0;
+  margin: auto;
+  justify-content: center;
+}
+
+.user-link {
+  text-decoration: none;
+  font-size: xx-large;
+  color: white;
+  margin-right: 20px;
+}
+.user-link:hover {
+  font-weight: bold;
+  color: var(--main-green);
+}
+
+.user-list-tile {
+  margin-bottom: 10px;
+}
+
+.follow-button {
+  color: white;
+  background-color: var(--main-light-green);
+  cursor: pointer;
+  border-radius: 12px;
+  border: var(--main-light-green) solid 1px;
+  height: 30px;
+  width: 70px;
+}
+
+.unfollow-button {
+  color: white;
+  background-color: gray;
+  cursor: pointer;
+  border-radius: 12px;
+  border: gray solid 1px;
+  height: 30px;
+  width: 70px;
+}
+
+.user-profile-container {
+  margin-top: 20px;
+  border: solid 1px gray;
+  background-color: var(--main-dark-grey);
+  border-radius: 4px;
 }
 
 .profile-container {
+  margin-top: 50px;
   display: inline-flex;
 }
 
 .purchase-history-container {
-  border: solid var(--main-dark-grey);
+  background-color: var(--main-dark-grey);
+  border: solid 1px gray;
+  border-radius: 4px;
+  height: 700px;
+  width: 50vw;
+  margin-right: 20px;
 }
 
 .purchase-history-header {
-  margin-bottom: 0px;
+  margin: 10px;
 }
 
-.follows-box {
-  border: solid var(--main-dark-grey);
+.profile-buying-power-header {
+  border-bottom: solid 1px gray;
+  margin: 0px;
+  padding: 10px;
+}
+
+.profile-transactions-container {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.profile-transactions-list {
+  padding: 0;
+  margin: 0;
 }
 
 .profile-info-container {
-  border: solid var(--main-dark-grey);
+  width: 20vw;
+  background-color: var(--main-dark-grey);
+  border: solid 1px gray;
+  border-radius: 4px;
+  margin-top: 20vh;
+  margin-bottom: 30px;
+}
+
+.follows-box {
+  width: 20vw;
+  background-color: var(--main-dark-grey);
+  border: solid 1px gray;
+  border-radius: 4px;
+}
+
+.market-container {
+  min-width: 80vw;
+  margin-top: 20px;
+  background-color: var(--main-dark-grey);
+  border: solid 1px gray;
+  border-radius: 4px;
+}
+
+.market-stocks-list-container {
+  height: 400px;
+  overflow-y: scroll;
+  border-top: solid 1px gray;
+}
+
+.market-stocks-list {
+  padding: 0;
+  margin: auto;
+}
+
+.market-search-bar {
+  margin-top: 15px;
+  margin-left: auto;
+  width: 600px;
+  padding: 8px;
+  border: 2px solid var(--main-grey);
+  border-radius: 8px;
+  outline: none;
+}
+.market-search-bar:focus {
+  border: 2px solid var(--main-light-green);
+}
+
+.buy-quantity-input {
+  width: 30px;
+  flex: 1;
+}
+
+.buy-button {
+  flex: 1;
+  margin: auto;
+}
+
+.market-header-h1 {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.market-list-tile {
+  width: 95%;
+  display: flex;
+  margin: 20px;
+}
+
+.market-ticker-text {
+  flex: 1;
+  margin: auto;  
+}
+
+.market-price-text {
+  flex: 1;
+  margin: auto;
+}
+
+.market-stock-view-button {
+  flex: 1;
+  margin: auto;
+  border: solid 2px var(--main-green) ;
+  border-radius: 12px;
+  color: white;
+  background-color: var(--main-green);
+  font-weight: bold;
+  width: 50px;
+  height: 40px;
+  cursor: pointer;
+}
+.market-stock-view-button:hover {
+  background-color: var(--main-light-green);
+  border: solid 2px var(--main-light-green);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.4), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-funds-button {
+  flex: 1;
+  margin: auto;
+  border: solid 2px var(--main-green) ;
+  border-radius: 12px;
+  color: white;
+  background-color: var(--main-green);
+  font-weight: bold;
+  width: 120px;
+  height: 60px;
+  cursor: pointer;
+}
+.add-funds-button:hover {
+  background-color: var(--main-light-green);
+  border: solid 2px var(--main-light-green);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.4), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.transaction-tile {
+  width: 95%;
+  margin: 40px;
+  display: flex;
+}
+
+.transaction-type-text {
+  flex: 1;
+  margin: auto;
 }

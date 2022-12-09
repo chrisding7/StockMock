@@ -3,7 +3,8 @@ import LoginContainer from './components/LoginComponents/LoginContainer';
 import Market from './components/Market';
 import Home from './components/Home.js';
 import UsersContainer from './components/UsersContainer.js';
-import Profile from './components/Profile.js';
+import MyProfile from './components/MyProfile.js';
+import UserProfile from './components/UserProfile';
 import Navbar from './components/Navbar.js';
 import {Route, Routes} from "react-router-dom";
 import {useState, useEffect} from "react";
@@ -12,6 +13,8 @@ function App() {
     const [user, setUser] = useState(null);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [profileUser, setProfileUser] = useState();
+    const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
         fetch("/auth").then((res) => {
@@ -21,7 +24,10 @@ function App() {
         });
     }, []);
 
-    
+    useEffect(() => {
+        fetch("/transactions").then(res => res.json())
+        .then(data => setTransactions(data))
+    }, []);
 
     if (!user) {
         return <LoginContainer setUser={setUser}
@@ -35,15 +41,18 @@ function App() {
         <div className="App">
             <Navbar user={user}
                 setUser={setUser}/>
+
             <Routes>
                 <Route exact path='/'
-                    element={<Home user={user}/>}/>
+                    element={<Home user={user} transactions={transactions}/>}/>
                 <Route exact path='/market'
-                    element={<Market/>}/>
+                    element={<Market user={user}/>}/>
                 <Route exact path='/users'
-                    element={<UsersContainer user={user}/>}/>
-                <Route exact path='/profile'
-                    element={<Profile user={user}/>}/>
+                    element={<UsersContainer user={user} profileUser={profileUser} setProfileUser={setProfileUser}/>}/>
+                <Route exact path='/myprofile'
+                    element={<MyProfile user={user}/>}/>
+                <Route exact path='/userprofile'
+                    element={<UserProfile profileUser={profileUser}/>}/>
             </Routes>
         </div>
     );
