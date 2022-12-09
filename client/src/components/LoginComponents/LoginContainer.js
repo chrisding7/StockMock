@@ -3,8 +3,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 // import cashLogo from '/Users/cding/Development/code/phase-5/StockMock/client/src/cash-icon.svg';
 // import logo from '/Users/cding/Development/code/phase-5/StockMock/client/src/logo.svg';
-import logo from '/logo.svg';
-import cashLogo from '/cash-icon.svg';
+import logo from '../../img/logo.svg';
+import cashLogo from '../../img/cash-icon.svg';
 import {Link} from "react-router-dom";
 
 function LoginContainer({

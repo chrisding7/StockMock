@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css"
-import logo from '/logo.svg';
+import logo from '../img/logo.svg';
 import {NavLink, useNavigate} from "react-router-dom";
 
 function Navbar({user, setUser, profileUser, setProfileUser}) {
