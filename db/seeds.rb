@@ -13,8 +13,8 @@ Stock.destroy_all
 User.destroy_all
 
 puts "seeding users"
-User.create(first_name: "Chris", last_name: "Ding", email:"chrisding7@gmail.com", password_digest: User.digest('123'), buying_power:"10000.00")
-User.create(first_name: "John", last_name: "Smith", email:"john.smith@gmail.com", password_digest: User.digest('123'), buying_power:"10000.00")
+User.create(first_name: "Chris", last_name: "Ding", email:"chrisding7@gmail.com", password: User.digest('123'), password_confirmation: User.digest('123'), buying_power:"10000.00")
+User.create(first_name: "John", last_name: "Smith", email:"john.smith@gmail.com", password: User.digest('123'), password_confirmation: User.digest('123'), buying_power:"10000.00")
 
 puts "seeding stocks"
 Stock.create(user_id: User.first.id, company: "Apple Inc.", ticker: "AAPL", price: 140.00, quantity: 4)
